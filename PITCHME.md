@@ -53,7 +53,7 @@ Deno = Server-side TS with V8 + Tokio in Rust
 # Node + TypeScript
 
 explicit transpilation<br>
-TypeScript compiler installed as dev dependency<br>
+TypeScript compiler installed as a dev dependency<br>
 transpiler run manually<br>
 dualism of src vs dist/build<br>
 editing src, running dist<br>
