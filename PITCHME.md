@@ -274,6 +274,7 @@ Recommended talks
 - [10 Things I Regret About Node.js by Ryan Dahl (2018)](https://www.youtube.com/watch?v=M3BM9TB-8yA)
 - [Deno, A New Server-Side Runtime by Ryan Dahl (2018)](https://www.youtube.com/watch?v=FlTG0UXRAkE)
 - [From Node.js to Deno - JavaScript/TypeScript runtime built with V8 and Rust by Rafał Pocztarski (2019)](https://www.youtube.com/watch?v=Aib1OZLy0_c&t=5s)
+
 </small>
 
 ---
@@ -289,6 +290,7 @@ Resources
 - https://www.typescriptlang.org/
 - https://github.com/TypeStrong/ts-node
 - https://nodejs.org/en/
+
 </small>
 
 ---
