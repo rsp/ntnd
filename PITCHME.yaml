@@ -1,8 +1,8 @@
 theme            : template
 theme-background : [ "#FFF" ]
-theme-headline   : [ "Lato", "#000", "none" ]
-theme-byline     : [ "Lato", "#000", "none" ]
-theme-text       : [ "Lato", "#000", "none" ]
+theme-headline   : [ "Roboto", "#000", "none" ]
+theme-byline     : [ "Roboto", "#000", "none" ]
+theme-text       : [ "Roboto", "#000", "none" ]
 theme-links      : [ "#5289F7", "#5254F7" ]
 theme-code       : [ "Source Code Pro" ]
 theme-controls   : [ "#484848" ]
