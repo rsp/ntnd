@@ -141,9 +141,9 @@ no access to files or network by default
 
 # Running
 
-`deno run script.ts`
+`deno script.ts`
 
-`deno run https://pocztarski.com/hi.ts`
+`deno https://pocztarski.com/hi.ts`
 
 ---
 
@@ -151,9 +151,9 @@ no access to files or network by default
 
 No network and filesystem access by default
 
-`deno run --allow-write script.ts`
+`deno --allow-write script.ts`
 
-`deno run --allow-net script.ts`
+`deno --allow-net script.ts`
 
 ---
 
@@ -199,12 +199,12 @@ hello('Warsaw TypeScript');
 # Running
 
 ```
-$ deno run hi.ts 
+$ deno hi.ts 
 Compile file:///Users/rsp/talks/ts-runtimes/hi.ts
 Download https://pocztarski.com/hello.ts
 Hello, Warsaw TypeScript!
 
-$ deno run hi.ts 
+$ deno hi.ts 
 Hello, Warsaw TypeScript!
 ```
 
@@ -257,7 +257,7 @@ Cleaning the cache (on Mac)<br>
 `rm -rvf ~/Library/Caches/deno`
 
 Using local caches<br>
-`DENO_DIR=$(pwd)/.deno deno run hi.ts`
+`DENO_DIR=$(pwd)/.deno deno hi.ts`
 
 ---
 
