@@ -101,7 +101,7 @@ get a single binary (not even a tarball)
 # Running
 
 Node + TS:<br>
-work on TS files, transpile TS to JS with tsc, run JS files with node
+work on TS files, transpile TS to JS with tsc,<br>run JS files with node
 
 ts-node:<br>
 work on TS files, run TS files with tsc
@@ -129,10 +129,10 @@ import URLs directly
 # Security
 
 Node + TS:<br>
-all programs run with node have access to all your files
+all programs have access to all your files
 
 ts-node:<br>
-all programs run with ts-node have access to all your files
+all programs have access to all your files
 
 Deno:<br>
 no access to files or network by default
@@ -151,9 +151,9 @@ no access to files or network by default
 
 No network and filesystem access by default
 
-`deno --allow-write script.ts`
+`deno run --allow-write script.ts`
 
-`deno --allow-net script.ts`
+`deno run --allow-net script.ts`
 
 ---
 
@@ -238,23 +238,15 @@ Deno: https://deno.land/x/
 
 Deno downloads and caches all the files globally by default
 
-Cleaning the cache (on Mac)
+Cleaning the cache (on Mac)<br>
+`rm -rvf ~/Library/Caches/deno`
 
-```
-rm -rvf ~/Library/Caches/deno
-```
-
----
-
-Using local caches
-
-```
-DENO_DIR=`pwd`/.deno deno run hi.ts
-```
+Using local caches<br>
+`DENO_DIR=$(pwd)/.deno deno run hi.ts`
 
 ---
 
-Interesting 
+Why it will get traction
 
 1. Ryan Dahl (known for Node's amazing success)
 2. V8 (engine by Google)
