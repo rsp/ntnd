@@ -10,7 +10,7 @@ Enough about me
 
 ---
 
-# Node.js vs ts-node vs Deno
+# <small>Node.js<br><small>vs</small><br>ts-node<br><small>vs</small><br>Deno</small>
 
 Comparing runtimes for TypeScript applications
 
