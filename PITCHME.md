@@ -6,7 +6,7 @@ You may know me from Stack Overflow
 
 # pocztarski.com
 
-Enough about me
+<small>(and also from Medium, Quora, etc.)</small>
 
 ---
 
@@ -16,15 +16,21 @@ Comparing runtimes for TypeScript applications
 
 ---
 
-A secure TypeScript runtime on V8
+# <small>Node.js + TypeScript<br>vs<br>ts-node<br>vs<br>Deno</small>
+
+Comparing runtimes for TypeScript applications
 
 ---
 
 # Timeline
 
-Node started by Ryan Dahl in 2009
+2009 Node.js
 
-Deno started by Ryan Dahl in 2018
+2012 TypeScript
+
+2015 ts-node
+
+2018 Deno
 
 ---
 
@@ -32,40 +38,91 @@ Deno started by Ryan Dahl in 2018
 
 Node = Server-side JS with V8 + libuv in C++
 
+Node + TypeScript = explicit transpilation to JavaScript
+
+ts-node = Node + TypeScript with implicit transpilation
+
 Deno = Server-side TS with V8 + Tokio in Rust
 
 ---
 
-# Numbers
+# Overview
 
-GitHub:
-- [nodejs/node](https://github.com/nodejs/node) <img alt="GitHub stars" src="https://img.shields.io/github/stars/nodejs/node.svg?style=social" class="stars" height="40" border="0">
-- [denoland/deno](https://github.com/denoland/deno) <img alt="GitHub stars" src="https://img.shields.io/github/stars/denoland/deno.svg?style=social" class="stars" height="40" border="0">
+---
 
-Stack Overflow:
-- [Questions tagged 'node.js'](https://stackoverflow.com/questions/tagged/node.js): 270,111
-- [Questions tagged 'deno'](https://stackoverflow.com/questions/tagged/deno): 9
+# Node + TypeScript
+
+explicit transpilation<br>
+TypeScript compiler installed as dev dependency<br>
+transpiler run manually<br>
+dualism of src vs dist/build<br>
+editing src, running dist<br>
+committing src to GitHub and gitignoring dist<br>
+publishing dist to npm and NOT npmignoring dist<br>
+
+---
+
+# ts-node
+
+implicit transpilation<br>
+ts-node is a Node.js module<br>
+it is written in Node.js<br>
+it's installed with npm<br>
+it uses the TypeScript compiler as a peer dependency<br>
+it installs its own dependencies<br>
+as a runtime it uses Node which is written in C++ using libuv
+
+---
+
+# Deno
+
+deno is a standalone executable<br>
+it doesn't use Node.js<br>
+it is distributed as a single binary<br>
+it contains the TypeScript compiler as a V8 snapshot<br>
+it has no dependencies<br>
+it is a runtime written in Rust using Tokio
 
 ---
 
 # Installation
 
-<small>
-For the adventurous:<br>
-`curl -fsSL https://deno.land/x/install/install.sh | sh`<br>
-`iwr https://deno.land/x/install/install.ps1 | iex`
+Node + TS:<br>
+install Node, npm install typescript
 
-Or get a single file from:<br>
-https://github.com/denoland/deno/releases
+ts-node:<br>
+install Node, npm install typescript and ts-node
 
-(The scripts above just scrape the GitHub releases page)
-</small>
+Deno:<br>
+get a single binary (not even a tarball)
 
 ---
 
-# DENO.LAND
+# Running
 
-github.com/denoland/deno/releases
+Node + TS:<br>
+work on TS files, transpile TS to JS with tsc, run JS files with node
+
+ts-node:<br>
+work on TS files, run TS files with tsc
+
+Deno:<br>
+work on TS files, run TS files with tsc
+
+---
+
+# Dependencies
+
+Node + TS:<br>
+install dependencies with npm<br>
+import locally installed libraries
+
+ts-node:<br>
+install dependencies with npm<br>
+import locally installed libraries
+
+Deno:<br>
+import URLs directly
 
 ---
 
@@ -87,7 +144,7 @@ No network and filesystem write access by default
 
 ---
 
-Deno vs ts-node
+# Deno vs ts-node
 
 See my answer on Stack Overflow for details:<br>
 [deno vs ts-node : what's the difference](https://stackoverflow.com/questions/53428120/deno-vs-ts-node-whats-the-difference/55609763#55609763)
@@ -96,23 +153,8 @@ For even more details see:<br>
 [node-ts-hello adventures](https://gist.github.com/rsp/f7d6aec4f2bbac3de4bc3f88d871cc70)
 
 Conclusion:<br>
-Deno is 32x faster on startup for a simple example.<br>
+Deno was 32x faster on startup for a simple example.<br>
 Much easier development.
-
----
-
-# Started with Go
-
-Porting to Rust was proposed very early
-
-<small>
-Deno vs Node.js (Issue #11)<br>
-https://github.com/denoland/deno/issues/11
-
-Suggestion: Look into porting to Rust and using Tokio (Issue #205)<br>
-https://github.com/denoland/deno/issues/205 <br>
-(interesting discussion)
-</small>
 
 ---
 
@@ -123,7 +165,7 @@ $ cat hi.ts
 
 import { hello } from 'https://pocztarski.com/hello.ts';
 
-hello();
+hello('Warsaw TypeScript');
 ```
 
 ---
@@ -131,46 +173,17 @@ hello();
 # Running
 
 ```
-$ deno hi.ts
+$ deno run hi.ts 
+Compile file:///Users/rsp/talks/irresponsible/git/cmi/hi.ts
+Download https://pocztarski.com/hello.ts
+Hello, Warsaw TypeScript!
 
-Compiling file:///Users/rsp/talks/deno/git/ntd/hi.ts
-Downloading https://pocztarski.com/hello.ts
-Uncaught Error: Unknown media type for: "https://pocztarski.com/hello.ts" ...
+$ deno run hi.ts 
+Hello, Warsaw TypeScript!
 ```
 
-Oops...
-
----
-
-Netlify - No fix
-
-```
-$ curl https://pocztarski.com/hello.ts -I
-HTTP/1.1 200 OK
-Accept-Ranges: bytes
-Cache-Control: public, max-age=0, must-revalidate
-Content-Length: 63
-Content-Type: text/vnd.trolltech.linguist; charset=UTF-8
-Date: Wed, 10 Apr 2019 07:39:40 GMT
-Etag: "e23f2644d8d63e564ffcba8baa758bd3-ssl"
-Strict-Transport-Security: max-age=31536000
-Age: 767
-Connection: keep-alive
-Server: Netlify
-X-NF-Request-ID: 7cb5e5c1-27a3-41ef-a352-8bb94064f514-7650812
-```
-
----
-
-What is text/vnd.trolltech.linguist
-
-https://www.iana.org/assignments/media-types/text/vnd.trolltech.linguist
-
-links to:
-
-http://doc.trolltech.com/4.1/linguist-manual.html
-
-(domain parking page)
+(make sure to have correct Content-Type for *.ts files
+e.g. Netlify serves *.ts files with Content-Type: text/vnd.trolltech.linguist by default)
 
 ---
 
@@ -200,102 +213,13 @@ $ cat _headers
 
 ---
 
-Netlify - Headers with bad fix
-
-```
-$ curl https://pocztarski.com/hello.ts -I
-HTTP/1.1 200 OK
-Accept-Ranges: bytes
-Cache-Control: public, max-age=0, must-revalidate
-Content-Length: 63
-Content-Type: text/vnd.trolltech.linguist; charset=UTF-8
-Content-Type: application/x-typescript
-Date: Wed, 10 Apr 2019 09:17:01 GMT
-Etag: "f9feb4d50402727c955be9cb95575ab5-ssl"
-Strict-Transport-Security: max-age=31536000
-Age: 2
-Connection: keep-alive
-Server: Netlify
-X-NF-Request-ID: 7cb5e5c1-27a3-41ef-a352-8bb94064f514-8367887
-```
-
----
-
-Netlify - Headers with good fix
-
-```
-$ curl https://pocztarski.com/hello.ts -I
-HTTP/1.1 200 OK
-Accept-Ranges: bytes
-Cache-Control: public, max-age=0, must-revalidate
-Content-Length: 63
-Content-Type: application/x-typescript
-Date: Wed, 10 Apr 2019 09:19:06 GMT
-Etag: "59689ad05ef50b0455a56c758821512c-ssl"
-Strict-Transport-Security: max-age=31536000
-Age: 0
-Connection: keep-alive
-Server: Netlify
-X-NF-Request-ID: 7cb5e5c1-27a3-41ef-a352-8bb94064f514-8384722
-```
-
----
-
 # Libraries
 
-Deno Core
+Node + TypeScript: https://www.npmjs.com/
 
-https://github.com/denoland/deno <img alt="GitHub stars" src="https://img.shields.io/github/stars/denoland/deno.svg?style=social" class="stars" height="40" border="0">
+ts-node: https://www.npmjs.com/
 
-Deno Standard Modules
-
-https://github.com/denoland/deno_std <img alt="GitHub stars" src="https://img.shields.io/github/stars/denoland/deno_std.svg?style=social" class="stars" height="40" border="0">
-
----
-
-Frameworks
-
-- [http](https://github.com/denoland/deno_std/tree/master/http) (std) <img alt="GitHub stars" src="https://img.shields.io/github/stars/denoland/deno_std.svg?style=social" class="stars" height="40" border="0">
-- [oak](https://github.com/oakserver/oak) by Kitson Kelly (Australia) <img alt="GitHub stars" src="https://img.shields.io/github/stars/oakserver/oak.svg?style=social" class="stars" height="40" border="0">
-- [dinatra](https://github.com/syumai/dinatra) by Syumai (Japan) <img alt="GitHub stars" src="https://img.shields.io/github/stars/syumai/dinatra.svg?style=social" class="stars" height="40" border="0">
-- [abc](https://github.com/zhmushan/abc) by Zhmushan (China) <img alt="GitHub stars" src="https://img.shields.io/github/stars/zhmushan/abc.svg?style=social" class="stars" height="40" border="0">
-- [expressive](https://github.com/jinjor/deno-playground/tree/master/expressive) by Yosuke Torii (Japan) <img alt="GitHub stars" src="https://img.shields.io/github/stars/jinjor/deno-playground.svg?style=social" class="stars" height="40" border="0">
-- [fen](https://github.com/fen-land/deno-fen) by Dominic Ming (China) <img alt="GitHub stars" src="https://img.shields.io/github/stars/fen-land/deno-fen.svg?style=social" class="stars" height="40" border="0">
-- [pogo](https://github.com/sholladay/pogo) by Seth Holladay (USA) <img alt="GitHub stars" src="https://img.shields.io/github/stars/sholladay/pogo.svg?style=social" class="stars" height="40" border="0">
-
----
-
-Databases
-
-- [redis](https://github.com/keroxp/deno-redis) by Yusuke Sakurai (Japan) <img alt="GitHub stars" src="https://img.shields.io/github/stars/keroxp/deno-redis.svg?style=social" class="stars" height="40" border="0">
-- [postgres](https://github.com/bartlomieju/deno-postgres) by Bartek Iwańczuk (Poland) <img alt="GitHub stars" src="https://img.shields.io/github/stars/bartlomieju/deno-postgres.svg?style=social" class="stars" height="40" border="0">
-- [mysql](https://github.com/manyuanrong/deno_mysql) by EnokMan (China) <img alt="GitHub stars" src="https://img.shields.io/github/stars/manyuanrong/deno_mysql.svg?style=social" class="stars" height="40" border="0">
-- [Deno Simple Orm](https://github.com/manyuanrong/dso) by EnokMan (China) <img alt="GitHub stars" src="https://img.shields.io/github/stars/manyuanrong/dso.svg?style=social" class="stars" height="40" border="0">
-
----
-
-Other Packages
-
-- https://deno.land/x/
-- https://denopkg.com/
-- https://deno.sh/
-- can be used directly from GitHub
-- any CDN will work (with correct MIME type)
-
----
-
-Modules Registry
-
-https://deno.land/x/
-
-<small>
-This is a redirection service - you add modules by PRs
-
-E.g. this install script URL:<br>
-https://deno.land/x/install/install.sh<br>
-redirects to:<br>
-https://raw.githubusercontent.com/denoland/deno_install/master/install.sh
-</small>
+Deno: https://deno.land/x/
 
 ---
 
@@ -310,7 +234,7 @@ rm -rvf ~/Library/Caches/deno
 Using local caches
 
 ```
-DENO_DIR=`pwd`/.deno deno hi.ts
+DENO_DIR=`pwd`/.deno deno run hi.ts
 ```
 
 ---
@@ -362,6 +286,7 @@ Recommended talks
 - [History of Node.js by Ryan Dahl (2011)](https://www.youtube.com/watch?v=SAc0vQCC6UQ)
 - [10 Things I Regret About Node.js by Ryan Dahl (2018)](https://www.youtube.com/watch?v=M3BM9TB-8yA)
 - [Deno, A New Server-Side Runtime by Ryan Dahl (2018)](https://www.youtube.com/watch?v=FlTG0UXRAkE)
+- [From Node.js to Deno - JavaScript/TypeScript runtime built with V8 and Rust by Rafał Pocztarski (2019)](https://www.youtube.com/watch?v=Aib1OZLy0_c&t=5s)
 </small>
 
 ---
@@ -369,17 +294,14 @@ Recommended talks
 Resources
 
 <small>
-- https://denoland.org/
 - https://deno.land/
+- https://denoland.org/
 - https://deno.land/manual.html
 - https://deno.land/typedoc/
 - https://deno.land/x/
-- https://twitter.com/deno_land
-- https://github.com/denoland/deno
-- https://github.com/denoland/deno/releases
-- https://github.com/denoland/deno/issues
-- https://github.com/denoland/deno/pulls
-
+- https://www.typescriptlang.org/
+- https://github.com/TypeStrong/ts-node
+- https://nodejs.org/en/
 </small>
 
 ---
