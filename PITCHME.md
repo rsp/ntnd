@@ -70,7 +70,7 @@ it is written in Node.js<br>
 it's installed with npm<br>
 it uses the TypeScript compiler as a peer dependency<br>
 it installs its own dependencies<br>
-as a runtime it uses Node which is written in C++ using libuv
+as a runtime it uses Node written in C++ using libuv
 
 ---
 
