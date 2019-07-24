@@ -1,4 +1,4 @@
-theme            : template
+theme            : white
 theme-background : [ "#FFF" ]
 theme-headline   : [ "Roboto", "#000", "none" ]
 theme-byline     : [ "Roboto", "#000", "none" ]
