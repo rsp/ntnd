@@ -157,6 +157,19 @@ No network and filesystem access by default
 
 ---
 
+# Overhead
+
+Node + TypeScript:<br>
+71MB (node) + 43MB (node_modules - 1 package from 1 contributor)
+
+ts-node:<br>
+71MB (node) + 44MB (node_modules - 9 packages from 41 contributors)
+
+Deno:<br>
+46MB (deno) + 0MB (no node_modules)
+
+---
+
 # Deno vs ts-node
 
 See my answer on Stack Overflow for details:<br>
@@ -236,6 +249,8 @@ Deno: https://deno.land/x/
 
 ---
 
+# Caching
+
 Deno downloads and caches all the files globally by default
 
 Cleaning the cache (on Mac)<br>
@@ -246,7 +261,7 @@ Using local caches<br>
 
 ---
 
-Why it will get traction
+# Why it will get traction
 
 1. Ryan Dahl (known for Node's amazing success)
 2. V8 (engine by Google)
@@ -255,7 +270,7 @@ Why it will get traction
 
 ---
 
-My prediction
+# My prediction
 
 The industry will ignore it until it is "ready" and then:
 
@@ -266,7 +281,7 @@ The industry will ignore it until it is "ready" and then:
 
 ---
 
-Recommended talks
+# Recommended talks
 
 <small>
 - [Ryan Dahl: Original Node.js presentation (2009)](https://www.youtube.com/watch?v=ztspvPYybIY)
@@ -279,7 +294,7 @@ Recommended talks
 
 ---
 
-Resources
+# Resources
 
 <small>
 - https://deno.land/
