@@ -107,7 +107,7 @@ ts-node:<br>
 work on TS files, run TS files with tsc
 
 Deno:<br>
-work on TS files, run TS files with tsc
+work on TS files, run TS files with deno
 
 ---
 
@@ -126,17 +126,30 @@ import URLs directly
 
 ---
 
+# Security
+
+Node + TS:<br>
+all programs run with node have access to all your files
+
+ts-node:<br>
+all programs run with ts-node have access to all your files
+
+Deno:<br>
+no access to files or network by default
+
+---
+
 # Running
 
-`deno script.ts`
+`deno run script.ts`
 
-`deno https://pocztarski.com/hi.ts`
+`deno run https://pocztarski.com/hi.ts`
 
 ---
 
 # Security
 
-No network and filesystem write access by default
+No network and filesystem access by default
 
 `deno --allow-write script.ts`
 
@@ -174,7 +187,7 @@ hello('Warsaw TypeScript');
 
 ```
 $ deno run hi.ts 
-Compile file:///Users/rsp/talks/irresponsible/git/cmi/hi.ts
+Compile file:///Users/rsp/talks/ts-runtimes/hi.ts
 Download https://pocztarski.com/hello.ts
 Hello, Warsaw TypeScript!
 
@@ -182,8 +195,8 @@ $ deno run hi.ts
 Hello, Warsaw TypeScript!
 ```
 
-(make sure to have correct Content-Type for *.ts files
-e.g. Netlify serves *.ts files with Content-Type: text/vnd.trolltech.linguist by default)
+(make sure to have correct Content-Type for ts files
+e.g. Netlify serves ts files with Content-Type: text/vnd.trolltech.linguist by default)
 
 ---
 
@@ -223,6 +236,8 @@ Deno: https://deno.land/x/
 
 ---
 
+Deno downloads and caches all the files globally by default
+
 Cleaning the cache (on Mac)
 
 ```
@@ -239,32 +254,12 @@ DENO_DIR=`pwd`/.deno deno run hi.ts
 
 ---
 
-Bug?
-
-```
-DENO_DIR=./.deno deno hi.ts
-error TS2691: An import path cannot end with a '.ts' extension.
-Consider importing 'https://pocztarski.com/hello' instead.
-```
-
----
-
-# Current state
-
-Not ready for production yet
-
-<small>
-(which is the best time to get involved)
-</small>
-
----
-
-Why it *will* get traction
+Interesting 
 
 1. Ryan Dahl (known for Node's amazing success)
-2. V8 (Google will promote it)
-3. TypeScript (Microsoft will promote it)
-4. Rust (Mozilla will promote it)
+2. V8 (engine by Google)
+3. TypeScript (language by Microsoft)
+4. Rust (language by Mozilla)
 
 ---
 
