@@ -1,2 +1,9 @@
-theme-override: style.css
-
+theme            : template
+theme-background : [ "#FFF" ]
+theme-headline   : [ "Raleway", "#000", "none" ]
+theme-byline     : [ "Raleway", "#000", "none" ]
+theme-text       : [ "Ubuntu", "#000", "none" ]
+theme-links      : [ "#5289F7", "#5254F7" ]
+theme-code       : [ "Source Code Pro" ]
+theme-controls   : [ "#484848" ]
+theme-margins    : [ "0", "15px" ]
