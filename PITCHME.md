@@ -297,7 +297,7 @@ Resources
 
 # Questions?
 
-Slides: https://pocztarski.com/ntd
+Slides: https://pocztarski.com/ntnd
 
 ## Rafał Pocztarski
 
