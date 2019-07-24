@@ -5,3 +5,7 @@
 img.stars {
   vertical-align: middle;
 }
+
+h1 {
+  text-transform: uppercase;
+}
